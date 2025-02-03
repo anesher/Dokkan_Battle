@@ -1,0 +1,14 @@
+## Comandos
+git checkout nombre_rama
+    (Rama :
+    alex
+    miguel
+    felipe
+    antonio
+    main(principal)
+    )
+
+    
+git add .
+git commit -m "Primeira commit"
+git push -u origin nombre_rama

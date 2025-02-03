@@ -1,0 +1,4 @@
+HOLA BUENAS TARDES RECUERDA ESTO LOQUETE:
+Para meterte al git: cd Dokkan_Battle
+Para cambiar de rama: git switch nombre-de-la-rama
+Para subir la rama: git push -u origin nombre-de-la-rama

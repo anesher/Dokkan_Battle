@@ -1,12 +1,12 @@
 <?php
 class Usuario{
-    private $id_usuario;
-    private $nombre;
-    private $correo;
-    private $piedras;
-    private $nombre_usuario;
-    private $contrasena;
-    private $tipo;
+    private int $id_usuario;
+    private string $nombre;
+    private string $correo;
+    private int $piedras;
+    private string $nombre_usuario;
+    private string $contrasena;
+    private string $tipo;
 
     public function __construct($id_usuario, $nombre, $correo, $piedras, $nombre_usuario, $contrasena, $tipo){
         $this->id_usuario = $id_usuario;
@@ -15,9 +15,16 @@ class Usuario{
         $this->piedras = $piedras;
         $this->nombre_usuario = $nombre_usuario;
         $this->contrasena = $contrasena;
-        $this->tipo = $tipo;
+        
+        if($tipo != "admin" && $tipo != "user"){
+            throw new Exception("Tipo de usuario no válido");
+        }else if($tipo == "admin"){
+            $this->tipo = "0";
+        }else{
+            $this->tipo = "1";
+        }
     }
-    
+
     // Getters
     public function getIdUsuario() {
         return $this->id_usuario;

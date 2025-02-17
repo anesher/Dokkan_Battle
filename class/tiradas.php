@@ -2,11 +2,10 @@
 include_once 'cartas.php';
 include_once 'usuario.php';
     class Tiradas extends Cartas {
-        private $id_tirada;
-        private $fecha_tirada;
+        private int $id_tirada;
+        private DateTime $fecha_tirada;
         public function __construct($id_tirada, $fecha_tirada, $id_carta, $id_usuario){
-            parent::__construct($id_carta);
-            parent::__construct($id_usuario);
+            parent::__construct($id_carta,$id_usuario);
             $this->id_tirada = $id_tirada;
             $this->fecha_tirada = $fecha_tirada;
         }

@@ -1,17 +1,18 @@
 <?php
-    class Cartas {
-    private $id;
-    private $name;
-    private $ki;
-    private $maxKi;
-    private $race;
-    private $gender;
-    private $description;
-    private $image;
-    private $affiliation;
-    private $deletedAt;
+    class Cartas extends Usuario {
+    private int $id;
+    private string $name;
+    private string $ki;
+    private string $maxKi;
+    private string $race;
+    private string $gender;
+    private string $description;
+    private string $image;
+    private string $affiliation;
+    private dateTime $deletedAt;
 
-    public function __construct($id, $name, $ki, $maxKi, $race, $gender, $description, $image, $affiliation, $deletedAt){
+    public function __construct($id_usuario, $id, $name, $ki, $maxKi, $race, $gender, $description, $image, $affiliation, $deletedAt){
+        parent ::__construct($id_usuario);  
         $this->id = $id;
         $this->name = $name;
         $this->ki = $ki;

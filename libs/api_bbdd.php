@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // URL de la API
-$url = "https://dragonball-api.com/api/characters?page=7&limit=10";
+$url = "https://dragonball-api.com/api/characters?page=&limit=10";
 
 // Obtener datos de la API
 $response = file_get_contents($url);

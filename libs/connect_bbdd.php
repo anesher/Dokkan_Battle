@@ -1,9 +1,7 @@
 <?php
     function connect_bbdd(){
-        $host = "localhost";  // Cambia si es necesario
-        $dbname = "dokkan";   // Nombre de la base de datos
-        $username = "dokkan";   // Usuario de MySQL
-        $password = "123456";  
+        // Incluir archivo de configuración
+        include 'config.php';
 
         // Conectar a MySQL
         $mysqli = new mysqli($host, $username, $password, $dbname);
@@ -14,6 +12,5 @@
         }else{
             return $mysqli;
         }
-
     }
 ?>

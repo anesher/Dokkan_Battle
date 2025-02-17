@@ -18,4 +18,7 @@ con todos los privilegios, con estos datos:
     Usuario: dokkan
     contraseña: 123456
 
-## bajarse esta estructura para poder tener todos la misma y trabajar sobre ella
+## bajarse esta estructura para poder tener todos la misma y trabajar sobre ellaç
+
+En las class metemos las class que vamos a generar mientras que en las libs metemos la conexcion a la bbdd y metemos las plantillas html para incrustarlas
+

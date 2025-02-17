@@ -1,18 +1,7 @@
 <?php
-// Configuración de la base de datos
-$host = "localhost";  // Cambia si es necesario
-$dbname = "dokkan";   // Nombre de la base de datos
-$username = "dokkan";   // Usuario de MySQL
-$password = "123456";       // Contraseña de MySQL
+include_once 'connect_bbdd.php';
 
-// Conectar a MySQL
-$conn = new mysqli($host, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
-
+$conn = connect_bbdd();
 // URL de la API
 $url = "https://dragonball-api.com/api/characters?page=&limit=10";
 

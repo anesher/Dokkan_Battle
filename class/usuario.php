@@ -82,5 +82,6 @@ class Usuario{
     public function setTipo($tipo) {
         $this->tipo = $tipo;
     }
+    
 }
 ?>

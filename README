@@ -1,3 +1,4 @@
+
 ## Comandos
 git checkout nombre_rama
     (Rama :
@@ -22,3 +23,4 @@ con todos los privilegios, con estos datos:
 
 En las class metemos las class que vamos a generar mientras que en las libs metemos la conexcion a la bbdd y metemos las plantillas html para incrustarlas
 
+>>>>>>> 49fcb8afab52ea4c19b06dd7aac28ec93fe3f236

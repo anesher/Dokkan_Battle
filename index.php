@@ -4,27 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página en Construcción</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f3f3f3;
-            font-family: Arial, sans-serif;
-        }
-        .message {
-            text-align: center;
-        }
-        .message h1 {
-            font-size: 2em;
-            color: #333;
-        }
-        .message p {
-            font-size: 1.2em;
-            color: #666;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
     <div class="message">

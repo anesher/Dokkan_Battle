@@ -19,7 +19,7 @@
         <button class="login"><a href="login.php"><strong>LOGIN<strong></a></button>
     </header>
 
-    <div class="container">
+    <div class="containerIndex">
         <div class="imagen">
             <img src="./img/logo.webp" alt="logo">
         </div>

@@ -1,3 +1,31 @@
+<?php
+session_start();
+require_once "../../class/Usuario.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!isset($_POST['usuario']) || !isset($_POST['contrasena'])) {
+        echo "Por favor, completa todos los campos.";
+    } else {
+        $nombre = htmlspecialchars($_POST['usuario'], ENT_QUOTES, 'UTF-8');
+        $contrasena = $_POST['contrasena'];
+        try {
+            $usuario = new Usuario();
+            $usuario->setNombreUsuario($nombre);
+            $usuario->setContrasena($contrasena);
+            if ($usuario->login()) {
+                $_SESSION['usuario'] = $nombre;
+                header("Location: index.php");
+                exit();
+            } else {
+                echo "Usuario o contraseña incorrectos.";
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +36,6 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-
     <!-- Botón "Volver" en la esquina superior izquierda -->
     <div class="position-absolute top-0 start-0 m-3">
         <a href="index.php" class="volver"><strong>Volver</strong></a>
@@ -28,7 +55,6 @@
     <div class="card p-4 shadow-lg" style="max-width: 400px; margin: auto;">
         <h1 class="text-center"><strong>Iniciar Sesión</strong></h1>
         <form class="form-signin" method="POST" action="login.php">
-            
             <!-- Contenedor Correo o Usuario -->
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
@@ -37,7 +63,7 @@
 
             <!-- Contenedor Contraseña -->
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña">
+                <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña">
                 <label for="contraseña">Contraseña</label>
             </div>
 
@@ -47,6 +73,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

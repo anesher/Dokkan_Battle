@@ -14,9 +14,9 @@
             <source src="./videos/Dragon Ball Sparking Zero Opening Intro Animation 4K.mp4">
         </video>
     <header>
-        <button class="registro"><a href="registro.php"><strong>REGISTRARSE</strong></a></buttons>
+        <button class="registro"><a href="views/users/registro.php"><strong>REGISTRARSE</strong></a></buttons>
 
-        <button class="login"><a href="login.php"><strong>LOGIN<strong></a></button>
+        <button class="login"><a href="views/users/login.php"><strong>LOGIN<strong></a></button>
     </header>
 
     <div class="containerIndex">

@@ -1,5 +1,6 @@
 <?php
 include_once '../../class/Usuario.php'; 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST['nombre']) || empty($_POST['correo']) || empty($_POST['nombreUsuario']) || empty($_POST['contrasena'])) {
         echo "Por favor, completa todos los campos.";
@@ -15,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 $usuario = new Usuario($nombre, $correo, 50, $nombreUsuario, $contrasena, "user");
                 $usuario->register(); // Registramos al usuario
+                header("Location: login.php");
+                exit();
             } catch (Exception $e) {
                 echo "Error: " . $e->getMessage();
             }
@@ -29,19 +32,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
 </head>
 <body>
     <!-- HEADER CON LOGO CENTRADO -->
     <header class="d-flex justify-content-center my-4">
-        <img src="./img/logo.webp" alt="Logo" class="img-fluid" style="max-width: 350px;">
+        <img src="../../img/logo.webp" alt="Logo" class="img-fluid" style="max-width: 350px;">
     </header>
 
     <!-- Video de fondo -->
     <video autoplay loop muted class="video-bg">
-        <source src="./videos/Dragon Ball Sparking Zero Opening Intro Animation 4K.mp4">
+        <source src="../../videos/Dragon Ball Sparking Zero Opening Intro Animation 4K.mp4">
     </video>
-    <button class="position-absolute top-0 volver"><a href="index.php"><strong>Volver</strong></a></button>
+    <button class="position-absolute top-0 volver"><a href="../../index.php"><strong>Volver</strong></a></button>
 
     <!-- Contenedor Login (formulario) -->
     <div class="card p-4 shadow-lg" style="max-width: 400px; margin: auto;">

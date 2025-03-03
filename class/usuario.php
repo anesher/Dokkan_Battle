@@ -1,5 +1,6 @@
 <?php
-require_once "libs/function/connect_bbdd.php";
+require_once "../../libs/function/connect_bbdd.php";
+
 class Usuario
 {
     private ?int $id_usuario = null;

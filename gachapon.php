@@ -6,8 +6,11 @@
     <title>Gachapon</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
-<body style="background-color: blue;">
+<body>
     <div class="main">
+    <video autoplay loop muted>
+<source src="/videos/fondo.mp4" type="video/mp4">
+</video>
         <header class="headerIniciado">
         <div class="logo-inicio">
             <a href="/index.php"><img src="/img/logo.webp" alt="Logo"></a>
@@ -23,9 +26,9 @@
             </div>
         </header>
         <div class="contenedor-gachapon">
-            <img src="/img/gachapon.png">
-            <h1>Titulo Gachapon</h1>
-            <p>Descripcion</p>
+            <video autoplay loop muted>
+                <source src="./videos/gachapon.mp4">
+            </video>
         </div>
     </div>
 </body>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../../class/Usuario.php";
+include_once "../../class/Usuario.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['usuario']) || !isset($_POST['contrasena'])) {
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usuario->setContrasena($contrasena);
             if ($usuario->login()) {
                 $_SESSION['usuario'] = $nombre;
-                header("Location: index.php");
+                header("Location: gachapon.php");
                 exit();
             } else {
                 echo "Usuario o contraseña incorrectos.";
@@ -33,22 +33,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
 </head>
 <body>
     <!-- Botón "Volver" en la esquina superior izquierda -->
     <div class="position-absolute top-0 start-0 m-3">
-        <a href="index.php" class="volver"><strong>Volver</strong></a>
+        <a href="../../index.php" class="volver"><strong>Volver</strong></a>
     </div>
 
     <!-- HEADER CON LOGO CENTRADO -->
     <header class="d-flex justify-content-center my-4">
-        <img src="./img/logo.webp" alt="Logo" class="img-fluid" style="max-width: 350px;">
+        <img src="../../img/logo.webp" alt="Logo" class="img-fluid" style="max-width: 350px;">
     </header>
 
     <!-- Video de fondo -->
     <video autoplay loop muted class="video-bg">
-        <source src="./videos/Dragon Ball Sparking Zero Opening Intro Animation 4K.mp4">
+        <source src="../../videos/Dragon Ball Sparking Zero Opening Intro Animation 4K.mp4">
     </video>
 
     <!-- Contenedor Login (formulario) -->

@@ -1,16 +1,18 @@
 <?php
     function connect_bbdd(){
-        // Incluir archivo de configuración
-        include 'config.php';
+        $host = "localhost";
+        $dbname = "dokkan";
+        $username = "dokkan";
+        $password = "123456";
 
         // Conectar a MySQL
-        $mysqli = new mysqli($host, $username, $password, $dbname);
+        $conn = new mysqli($host, $username, $password, $dbname);
 
         // Verificar conexión
-        if ($mysqli->connect_error) {
-            die("Error de conexión: " . $mysqli->connect_error);
+        if ($conn->connect_error) {
+            die("Error de conexión: " . $conn->connect_error);
         }else{
-            return $mysqli;
+            return $conn;
         }
     }
 ?>

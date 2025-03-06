@@ -1,0 +1,80 @@
+.contenedor-gachapon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contenedor-gachapon img {
+    width: 38%;
+    border-radius: 20%;
+    border: 2px solid #f57c00;
+}
+.contenedor-gachapon button{
+    font-size: 30px;
+    font-family: 'Saiyan Sans';
+    border: 0px;
+    background-color: #f57c00;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+.costePiedras{
+    font-size: 35px;
+    font-family: 'Saiyan Sans';
+    color: #f57c00;
+    margin-top: 20px;
+}
+.contenedor-gachapon h1{
+    font-size: 50px;
+    font-family: 'Saiyan Sans';
+    color: #f57c00;
+    margin-top: 20px;
+}
+
+.btn-gachapon:hover, .contenedor-tirada button:hover{
+    background-color: #1976d2;
+    border-color: #64b5f6;
+    transform: scale(1.1);
+}
+.gachaDescrip{
+    font-size: 17px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+}
+.contenedor-tirada{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contenedor-tirada img{
+    width: 20%;
+    height: 20%;
+    border-radius: 15%;
+    border: 2px solid #f57c00;
+}
+.contenedor-tirada h1{
+    font-size: 50px;
+    font-family: 'Saiyan Sans';
+    color: #f57c00;
+    margin-top: 20px;
+}
+.contenedor-tirada p{
+    font-size: 35px;
+    font-family: 'Saiyan Sans';
+    color: #f57c00;
+    margin-top: 20px;
+}
+.contenedor-tirada button{
+    font-size: 30px;
+    font-family: 'Saiyan Sans';
+    border: 0px;
+    background-color: #f57c00;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}

@@ -169,7 +169,7 @@ class Usuario
     }
 
     public function clicker($clicker){
-        
+        echo "Has hecho click";
     }
 }
 ?>

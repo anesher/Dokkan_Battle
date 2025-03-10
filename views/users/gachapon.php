@@ -1,3 +1,7 @@
+<?php
+include_once "../../class/Usuario.php";
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

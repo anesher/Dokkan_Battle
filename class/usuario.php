@@ -167,6 +167,10 @@ class Usuario
         }
         return false;
     }
+
+    public function clicker($clicker){
+        
+    }
 }
 ?>
 

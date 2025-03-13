@@ -258,3 +258,31 @@ article h3 {
     display:flex;
     justify-content: center;
 }
+
+.containerPiedras {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -100px;
+}
+
+.containerPiedras div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.imgPiedras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 50%;
+    height: 30%;
+}
+
+.imgPiedras img {
+    border-radius: 10px;
+}

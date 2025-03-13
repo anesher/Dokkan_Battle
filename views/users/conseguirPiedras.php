@@ -10,7 +10,7 @@
 <body>
     <div class="main">
         <video autoplay loop muted id="video-bd">
-            <source src="./videos/fondo.mp4" type="video/mp4">
+            <source src="../../videos/fondo.mp4" type="video/mp4">
         </video>
         <header class="headerIniciado">
         <div class="logo-inicio">
@@ -27,18 +27,15 @@
             </div>
         </header>
 
-        <div class="container">
-            <div class="container">
-                <h1>¡Consigue las Piedras del Dragón!</h1>
-            </div>
+        <div class="container-conseguirPiedras">
+            
+            <h1>¡Consigue las Piedras del Dragon!</h1>
 
             <div class="container-img">  
                 <img src="../../img/conseguirPiedras.avif" alt="Conseguir Piedras" class="img-fluid">
             </div>
-
-            <div class="container">  
-                <button class="piedras">Click aquí para conseguir piedras</button>
-            </div>
+            
+            <button class="piedras">Click aquí para conseguir piedras</button>
         </div>
     </div>
 </body>

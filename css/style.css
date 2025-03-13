@@ -179,7 +179,6 @@ h2{
 .container {
     display:flex;
     justify-content: center;
-
 }
 
 h1 {
@@ -253,8 +252,28 @@ article h3 {
 }
 
 .container-img {
-    height: 200px;
-    width: 450px;
+    height: 300px;
+    width: 600px;
     display:flex;
     justify-content: center;
+}
+
+.container-img img {
+    border-radius: 10px;
+}
+
+.container-conseguirPiedras {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-conseguirPiedras h1 {
+    margin-top: -10px;
+}
+
+.piedras {
+    display:flex;
+    margin-top: 20px;
+
 }

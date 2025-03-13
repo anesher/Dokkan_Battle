@@ -168,8 +168,35 @@ class Usuario
         return false;
     }
 
-    public function clicker($clicker){
-        echo "Has hecho click";
+    public function sumarPiedra() {
+        $conn = connect_bbdd(); // Conectar a la base de datos
+    
+        // Obtener las piedras actuales
+        $sql_select = "SELECT piedras FROM usuario WHERE nombre_usuario = ?";
+        $stmt_select = $conn->prepare($sql_select);
+        $stmt_select->bind_param("s", $this->nombre_usuario);
+        $stmt_select->execute();
+        $resultado = $stmt_select->get_result();
+    
+        if ($resultado->num_rows == 1) {
+            $fila = $resultado->fetch_assoc();
+            $nuevas_piedras = $fila['piedras'] + 1; // Sumar 1
+        } else {
+            return false; // Usuario no encontrado
+        }
+    
+        $stmt_select->close();
+    
+        // Actualizar piedras en la base de datos
+        $sql_update = "UPDATE usuario SET piedras = ? WHERE nombre_usuario = ?";
+        $stmt_update = $conn->prepare($sql_update);
+        $stmt_update->bind_param("is", $nuevas_piedras, $this->nombre_usuario);
+        $resultado = $stmt_update->execute();
+    
+        $stmt_update->close();
+        $conn->close();
+    
+        return $resultado;
     }
 }
 ?>

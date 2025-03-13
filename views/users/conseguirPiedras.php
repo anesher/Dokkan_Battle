@@ -27,15 +27,19 @@
             </div>
         </header>
 
-        <div class="container-conseguirPiedras">
-            
-            <h1>¡Consigue las Piedras del Dragon!</h1>
+        <div class="containerPiedras">
+            <div>
+                <h1>¡Consigue las Piedras del Dragon!</h1>
+            </div>
 
-            <div class="container-img">  
+            <div class="imgPiedras">  
                 <img src="../../img/conseguirPiedras.avif" alt="Conseguir Piedras" class="img-fluid">
             </div>
-            
-            <button class="piedras">Click aquí para conseguir piedras</button>
+            <form action="" method="post">
+            <div>  
+                <button class="piedras" type="submit" name="clicker">Click aquí para conseguir piedras</button>
+            </div>
+            </form>
         </div>
     </div>
 </body>

@@ -10,7 +10,7 @@
 <body>
     <div class="main">
         <video autoplay loop muted id="video-bd">
-            <source src="./videos/fondo.mp4" type="video/mp4">
+            <source src="../../videos/fondo.mp4" type="video/mp4">
         </video>
         <header class="headerIniciado">
         <div class="logo-inicio">

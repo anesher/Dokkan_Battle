@@ -1,6 +1,6 @@
 <?php
 require_once "../../libs/function/connect_bbdd.php";
-
+//require_once "../../libs/Render/Render_html.php";
 class Usuario
 {
     private ?int $id_usuario = null;
@@ -178,6 +178,39 @@ class Usuario
         $stmt_select->execute();
         $resultado = $stmt_select->get_result();
     
+        if ($resultado->num_rows == 1) {
+            $fila = $resultado->fetch_assoc();
+            $nuevas_piedras = $fila['piedras'] + 1; // Sumar 1
+        } else {
+            return false; // Usuario no encontrado
+        }
+    
+        $stmt_select->close();
+    
+        // Actualizar piedras en la base de datos
+        $sql_update = "UPDATE usuario SET piedras = ? WHERE nombre_usuario = ?";
+        $stmt_update = $conn->prepare($sql_update);
+        $stmt_update->bind_param("is", $nuevas_piedras, $this->nombre_usuario);
+        $resultado = $stmt_update->execute();
+    
+        $stmt_update->close();
+        $conn->close();
+    
+        return $resultado;
+    }
+    // funcion de clicker para sumar piedras cuando le doy al boton, aqui 
+    // creamos una funcion para sumar piedras para trabajar con objetos y lanzarlos
+    // a la bbdd
+    function clicker($stmt_select){
+        $conn = connect_bbdd();
+        $consulta = "SELECT piedras FROM usuario WHERE nombre_usuario = ?";
+        $stmt = $conn->prepare($consulta);
+        $stmt->bind_param("s", $this->nombre_usuario);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+
         if ($resultado->num_rows == 1) {
             $fila = $resultado->fetch_assoc();
             $nuevas_piedras = $fila['piedras'] + 1; // Sumar 1

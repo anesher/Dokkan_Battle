@@ -8,14 +8,14 @@
 <body style="background-color: black;">
 
     <video id="myVideo" autoplay width="1920px" height="1080px">
-        <source src="/videos/summon.mp4" type="video/mp4">
+        <source src="../../videos/summon.mp4" type="video/mp4">
     </video>
 
     <script>
         let video = document.getElementById("myVideo");
 
         video.onended = function() {
-            window.location.href = "http://localhost:3000/views/users/tiradaGachapon.php";
+            window.location.href = "./tiradaGachapon.php";
         };
     </script>
 

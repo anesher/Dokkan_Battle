@@ -1,3 +1,9 @@
+<?php
+    include_once("../Dokkan_Battle/libs/Render/Render_html.php");
+
+    $render = new RenderHTML();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +19,10 @@
     <video autoplay loop muted playsinline>
             <source src="./videos/Dragon Ball Sparking Zero Opening Intro Animation 4K.mp4">
         </video>
-    <header>
+    
+    <header class="headerNoIniciado">
+        <?php /*$render->RenderHeader(); */?>
+
         <button class="registro"><a href="./views/users/registro.php">REGISTRARSE</a></buttons>
 
         <button class="login"><a href="./views/users/login.php">LOGIN</a></button>

@@ -38,53 +38,30 @@ class RenderHTML
     // Renderizar el header
     public function RenderHeader()
     {
-        echo ' 
-        <!DOCTYPE html>
-        <html lang="es">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Dokkan Battle</title>
-            <link rel="stylesheet" type="text/css" href="../../css/style.css">
-        </head>
-        <body>
-            <video autoplay loop muted playsinline class="background-video">
-                <source src="../../videos/Dragon Ball Sparking Zero Opening Intro Animation 4K.mp4">
-            </video>
-            <div class="main">
-                <header class="headerIniciado">
+        echo '
                     <div class="logo-inicio">
-                        <a href="../../index.php"><img src="../../img/logo.webp" alt="Logo"></a>
-                    </div>
-                    <div class="botones">';
+                        <a href="/Dokkan_Battle/index.php"><img src="./img/logo.webp" alt="Logo"></a>
+                    </div>';
 
         if ($this->isLogged) {
             echo ' 
                         <input type="number" readonly value="' . $this->piedras . '" id="piedras" name="piedras">
-                        <button class="conseguirPiedras"><a href="./conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
+                        <button class="conseguirPiedras"><a href="/Dokkan_Battle/views/users/conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
                         <div class="botones2">
-                            <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
-                            <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
-                            <button class="gachapon"><a href="./gachapon.php">GACHAPÓN</a></button>
+                            <button class="perfil"><a href="/Dokkan_Battle/views/users/perfil.php">PERFIL</a></button>
+                            <button class="inventario"><a href="/Dokkan_Battle/views/users/inventario.php">INVENTARIO</a></button>
+                            <button class="gachapon"><a href="/Dokkan_Battle/views/users/gachapon.php">GACHAPÓN</a></button>
                         </div>';
         } else {
-            echo ' 
-                        <button class="registro"><a href="./registro.php">REGISTRARSE</a></button>
-                        <button class="login"><a href="./login.php">LOGIN</a></button>';
+            echo ' <div class="botones">
+                        <button class="registro"><a href="./views/users/registro.php">REGISTRARSE</a></button>
+                        <button class="login"><a href="./views/users/login.php">LOGIN</a></button>
+                        </div>';
         }
 
         echo ' 
                     </div>
                 </header>';
-    }
-
-    // Renderizar el footer
-    public function RenderFooter()
-    {
-        echo ' 
-            </div>
-        </body>
-        </html>';
     }
 }
 ?>

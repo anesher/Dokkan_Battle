@@ -1,4 +1,4 @@
-header {
+.headerNoIniciado {
     margin:0;
     padding:50px;
     background-color: transparent;
@@ -32,7 +32,7 @@ a{
     text-align: center;
 }
 
-.registro:hover, .login:hover, .quienessomos:hover, .volver:hover, .registrarse:hover, .inicio-sesion:hover, .piedras:hover, .conseguirPiedras:hover, .inventario:hover, .perfil:hover, .gachapon:hover{
+.registro:hover, .login:hover, .quienessomos:hover, .volver:hover, .registrarse:hover, .inicio-sesion:hover, .piedras:hover, .conseguirPiedras:hover, .inventario:hover, .perfil:hover, .gachapon:hover, .editarPerfil:hover{
     background-color: #1976d2;
     border-color: #64b5f6;
     transform: scale(1.1);
@@ -67,6 +67,7 @@ video {
 .main {
     position: relative;
     z-index: 5;
+    margin-bottom: 5%;
 }
 
 .imagen {
@@ -239,10 +240,25 @@ article {
     align-items: center;
     flex-direction: column;
     margin: 5px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 article h3 {
     color: black;
+}
+
+article div {
+    width: 250px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+article div img {
+    width: 100%;
+    height: 100%;
 }
 
 .container-inventario {

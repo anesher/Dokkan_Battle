@@ -7,6 +7,10 @@
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
 </head>
 <body>
+    <video autoplay muted loop id="">
+        <source src="../../videos/fondo.mp4" type="video/mp4">
+    </video>
+
     <div class="main">
         
         <header class="headerIniciado">
@@ -17,7 +21,7 @@
             <input type="number" readonly value="0" id="piedras" name="piedras">
             <button class="conseguirPiedras"><a href="./conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
             <div class="botones2">
-            <button class="perfil"><a href=".perfil.php">PERFIL</a></button>
+            <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
             <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
             <button class="gachapon"><a href="./gachapon.php">GACHAPON</a></button>
             </div>
@@ -26,7 +30,7 @@
         <section class="container-inventario">
             <article>
                 <a href="">
-                <div class="logo-inicio">
+                <div>
                     <!--Imagen del personaje-->
                     <img src="../../img/foto_miguel.jpg">
                 </div>

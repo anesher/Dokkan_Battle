@@ -95,6 +95,7 @@ class Usuario
 
     public function setPiedras($piedras)
     {
+        // para conseguir las piedras que tiene el usuario
         $this->piedras = $piedras;
     }
 
@@ -150,6 +151,7 @@ class Usuario
 
     // Función para iniciar sesión con el usuario y la contraseña
     public function login() {
+        session_start();
         $conn = connect_bbdd();
         $consulta = "SELECT * FROM usuario WHERE nombre_usuario = ?";
         $stmt = $conn->prepare($consulta);
@@ -166,6 +168,7 @@ class Usuario
             }
         }
         return false;
+        
     }
 
     public function sumarPiedra() {
@@ -230,6 +233,15 @@ class Usuario
         $conn->close();
     
         return $resultado;
+    }
+    // funcion para conseguir un personaje aleatorio 
+    public function obtenerPersonajeAleatorio() {
+        $query = "SELECT id, name, ki, maxKi, race, gender, description, image, affiliation FROM cartas WHERE deletedAt IS NULL ORDER BY RAND() LIMIT 1";
+        //$stmt = $this->db->prepare($query);
+        //$stmt->execute();
+        //$personaje = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+       // return $personaje ?: null;
     }
 }
 ?>

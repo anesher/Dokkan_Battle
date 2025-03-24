@@ -1,40 +1,45 @@
-<?php
-
-require_once '../../libs/function/connect_bbdd.php';
-require_once '../../class/usuario.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conseguir Piedras</title>
-    <script>
-        function conseguirPiedra() {
-            fetch("conseguirPiedras.php", {
-                    method: "POST"
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        console.error("Error del servidor:", data.error);
-                        alert("Error: " + data.error);
-                    } else {
-                        document.getElementById("piedras-count").innerText = data.piedras;
-                    }
-                })
-                .catch(error => console.error("Error en la petición:", error));
-        }
-    </script>
+    <title>Conseguir piedras</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+
 </head>
-
 <body>
-    <h1>Conseguir Piedras</h1>
-    <p>Piedras actuales: <span id="piedras-count">0</span></p>
-    <button onclick="conseguirPiedra()">Conseguir Piedra</button>
-</body>
+    <div class="main">
+        <video autoplay loop muted id="video-bd">
+            <source src="../../videos/fondo.mp4" type="video/mp4">
+        </video>
+        <header class="headerIniciado">
+        <div class="logo-inicio">
+            <a href="../../index.php"><img src="../../img/logo.webp" alt="Logo"></a>
+        </div>
+            <div class="botones">
+            <input type="number" readonly value="0" id="piedras" name="piedras">
+            <button class="conseguirPiedras"><a href="./conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
+            <div class="botones2">
+            <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
+            <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
+            <button class="gachapon"><a href="./gachapon.php">GACHAPON</a></button>
+            </div>
+            </div>
+        </header>
 
-</html>
+        <div class="containerPiedras">
+            <div>
+                <h1>¡Consigue las Piedras del Dragon!</h1>
+            </div>
+
+            <div class="imgPiedras">  
+                <img src="../../img/conseguirPiedras.avif" alt="Conseguir Piedras" class="img-fluid">
+            </div>
+            <form action="" method="post">
+            <div>  
+                <button class="piedras" type="submit" name="clicker">Click aquí para conseguir piedras</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>

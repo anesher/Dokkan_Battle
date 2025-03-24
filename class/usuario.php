@@ -3,6 +3,7 @@ require_once "../../libs/function/connect_bbdd.php";
 //require_once "../../libs/Render/Render_html.php";
 class Usuario
 {
+    private $db;
     private ?int $id_usuario = null;
     private string $nombre;
     private string $correo;
@@ -11,7 +12,10 @@ class Usuario
     private string $contrasena;
     private string $tipo;
 
-    public function __construct($nombre = null, $correo = null, $piedras = null, $nombre_usuario = null, $contrasena = null, $tipo = null) {
+    public function __construct($db=null,$nombre = null, $correo = null, $piedras = 0, $nombre_usuario = null, $contrasena = null, $tipo = null) {
+        if($db !== null){
+            $this->db = $db;
+        }
         if ($nombre !== null) {
             $this->nombre = htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
         }
@@ -21,9 +25,7 @@ class Usuario
                 throw new Exception("Correo electrónico no válido");
             }
         }
-        if ($piedras !== null) {
-            $this->piedras = $piedras;
-        }
+        $this->piedras = $piedras;
         if ($nombre_usuario !== null) {
             $this->nombre_usuario = htmlspecialchars($nombre_usuario, ENT_QUOTES, 'UTF-8');
         }
@@ -33,11 +35,8 @@ class Usuario
         if ($tipo !== null) {
             if ($tipo != "admin" && $tipo != "user") {
                 throw new Exception("Tipo de usuario no válido");
-            } else if ($tipo == "admin") {
-                $this->tipo = "0";
-            } else {
-                $this->tipo = "1";
             }
+            $this->tipo = ($tipo == "admin") ? "0" : "1";
         }
     }
 
@@ -162,75 +161,33 @@ class Usuario
         if ($resultado->num_rows == 1) {
             $fila = $resultado->fetch_assoc();
             if (password_verify($this->contrasena, $fila['contraseña'])) {
+                $_SESSION['user_id'] = $fila['id_usuario'];
+                $_SESSION['isLogged'] = true;
                 return true;
             }
         }
         return false;
     }
 
-    public function sumarPiedra() {
-        $conn = connect_bbdd(); // Conectar a la base de datos
-    
-        // Obtener las piedras actuales
-        $sql_select = "SELECT piedras FROM usuario WHERE nombre_usuario = ?";
-        $stmt_select = $conn->prepare($sql_select);
-        $stmt_select->bind_param("s", $this->nombre_usuario);
-        $stmt_select->execute();
-        $resultado = $stmt_select->get_result();
-    
-        if ($resultado->num_rows == 1) {
-            $fila = $resultado->fetch_assoc();
-            $nuevas_piedras = $fila['piedras'] + 1; // Sumar 1
-        } else {
-            return false; // Usuario no encontrado
-        }
-    
-        $stmt_select->close();
-    
-        // Actualizar piedras en la base de datos
-        $sql_update = "UPDATE usuario SET piedras = ? WHERE nombre_usuario = ?";
-        $stmt_update = $conn->prepare($sql_update);
-        $stmt_update->bind_param("is", $nuevas_piedras, $this->nombre_usuario);
-        $resultado = $stmt_update->execute();
-    
-        $stmt_update->close();
-        $conn->close();
-    
-        return $resultado;
-    }
-    // funcion de clicker para sumar piedras cuando le doy al boton, aqui 
-    // creamos una funcion para sumar piedras para trabajar con objetos y lanzarlos
-    // a la bbdd
-    function clicker($stmt_select){
-        $conn = connect_bbdd();
-        $consulta = "SELECT piedras FROM usuario WHERE nombre_usuario = ?";
-        $stmt = $conn->prepare($consulta);
-        $stmt->bind_param("s", $this->nombre_usuario);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
-        $stmt->close();
-        $conn->close();
-
-        if ($resultado->num_rows == 1) {
-            $fila = $resultado->fetch_assoc();
-            $nuevas_piedras = $fila['piedras'] + 1; // Sumar 1
-        } else {
-            return false; // Usuario no encontrado
-        }
-    
-        $stmt_select->close();
-    
-        // Actualizar piedras en la base de datos
-        $sql_update = "UPDATE usuario SET piedras = ? WHERE nombre_usuario = ?";
-        $stmt_update = $conn->prepare($sql_update);
-        $stmt_update->bind_param("is", $nuevas_piedras, $this->nombre_usuario);
-        $resultado = $stmt_update->execute();
-    
-        $stmt_update->close();
-        $conn->close();
-    
-        return $resultado;
+    // Función para conseguir una piedra
+    public function conseguirPiedra() {
+        $query = "SELECT piedras FROM usuario WHERE nombre_usuario = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$this->nombre_usuario]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $piedrasActuales = $result ? $result['piedras'] : 0;
+        
+        $nuevasPiedras = $piedrasActuales + 1;
+        
+        $updateQuery = "UPDATE usuario SET piedras = ? WHERE nombre_usuario = ?";
+        $updateStmt = $this->db->prepare($updateQuery);
+        $updateStmt->execute([$nuevasPiedras, $this->nombre_usuario]);
+        
+        $_SESSION['piedras'] = $nuevasPiedras;
+        
+        return $nuevasPiedras;
     }
 }
+
 ?>
 

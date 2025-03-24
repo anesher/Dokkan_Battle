@@ -36,6 +36,15 @@ include_once "../../class/Usuario.php";
             <p class="gachaDescrip">¡ Prueba tu suerte y hazte con los personajes mas fuertes del universo de Dragon Ball   !</p>
             <img src="../../img/gachapon.webp" alt="Gachapon">
             <p class="costePiedras">Coste: 5 piedras</p>
+
+
+
+
+
+
+
+
+            
             <button class="btn-gachapon" onclick="location.href='video.html'">TIRAR</button>
         </div>
     </div>

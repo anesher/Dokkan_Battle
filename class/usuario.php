@@ -237,11 +237,11 @@ class Usuario
     // funcion para conseguir un personaje aleatorio 
     public function obtenerPersonajeAleatorio() {
         $query = "SELECT id, name, ki, maxKi, race, gender, description, image, affiliation FROM cartas WHERE deletedAt IS NULL ORDER BY RAND() LIMIT 1";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        $personaje = $stmt->fetch(PDO::FETCH_ASSOC);
+        //$stmt = $this->db->prepare($query);
+        //$stmt->execute();
+        //$personaje = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        return $personaje ?: null;
+       // return $personaje ?: null;
     }
 }
 ?>

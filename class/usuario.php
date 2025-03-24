@@ -163,8 +163,6 @@ class Usuario
         if ($resultado->num_rows == 1) {
             $fila = $resultado->fetch_assoc();
             if (password_verify($this->contrasena, $fila['contraseña'])) {
-                $_SESSION['user_id'] = $fila['id_usuario'];
-                $_SESSION['isLogged'] = true;
                 return true;
             }
         }

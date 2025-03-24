@@ -164,6 +164,9 @@ class Usuario
         if ($resultado->num_rows == 1) {
             $fila = $resultado->fetch_assoc();
             if (password_verify($this->contrasena, $fila['contraseña'])) {
+                $_SESSION['usuario'] = $fila['nombre_usuario'];
+                $_SESSION['user_id'] = $fila['id_usuario'];
+                $_SESSION['tipo'] = $fila['tipo'];
                 return true;
             }
         }
@@ -237,11 +240,13 @@ class Usuario
     // funcion para conseguir un personaje aleatorio 
     public function obtenerPersonajeAleatorio() {
         $query = "SELECT id, name, ki, maxKi, race, gender, description, image, affiliation FROM cartas WHERE deletedAt IS NULL ORDER BY RAND() LIMIT 1";
-        //$stmt = $this->db->prepare($query);
-        //$stmt->execute();
-        //$personaje = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-       // return $personaje ?: null;
+        $conn = connect_bbdd();
+        $stmt = $conn->prepare($query); 
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $stmt->close();
+        $conn->close();
+        return $resultado->fetch_assoc();
     }
 }
 ?>

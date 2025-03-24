@@ -1,6 +1,5 @@
 <?php
 include_once '../../class/Usuario.php'; 
-require_once '../../libs/function/connect_bbdd.php'; // Asegúrate de tener esta función
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST['nombre']) || empty($_POST['correo']) || empty($_POST['nombreUsuario']) || empty($_POST['contrasena'])) {
@@ -15,8 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Correo electrónico no válido.";
         } else {
             try {
-                $db = connect_bbdd(); // Asegúrate de que esta función funcione correctamente
-                $usuario = new Usuario($db, $nombre, $correo, 50, $nombreUsuario, $contrasena, "user");
+                $usuario = new Usuario($nombre, $correo, 50, $nombreUsuario, $contrasena, "user");
                 $usuario->register(); // Registramos al usuario
                 header("Location: login.php");
                 exit();
@@ -26,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-?>
 ?>
 <!DOCTYPE html>
 <html lang="es">

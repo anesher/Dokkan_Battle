@@ -9,7 +9,7 @@ class RenderHTML
     public function __construct()
     {
         // Obtener valores de sesión o asignar valores por defecto
-        $this->isLogged = isset($_SESSION['user_id']);
+        $this->isLogged = $_SESSION['isLogged'] ?? false;
         $this->piedras = $_SESSION['piedras'] ?? 0;
     }
 

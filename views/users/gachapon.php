@@ -49,17 +49,19 @@ if ($personaje) {
     </video>
     <div class="main">
         <header class="headerIniciado">
-            <div class="logo-inicio">
-                <a href="../../index.php"><img src="../../img/logo.webp" alt="Logo"></a>
-            </div>
+        <div class="logo-inicio">
+            <a href="../../index.php"><img src="../../img/logo.webp" alt="Logo"></a>
+        </div>
+
             <div class="botones">
-                <input type="number" readonly value="0" id="piedras" name="piedras">
-                <button class="conseguirPiedras"><a href="./conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
-                <div class="botones2">
-                    <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
-                    <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
-                    <button class="gachapon"><a href="./gachapon.php">GACHAPON</a></button>
-                </div>
+            <input type="number" readonly value="0" id="piedras" name="piedras">
+            <button class="conseguirPiedras"><a href="./conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
+            </div>
+
+            <div class="botones2">
+            <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
+            <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
+            <button class="gachapon"><a href="./gachapon.php">GACHAPON</a></button>
             </div>
         </header>
         <div class="contenedor-gachapon">

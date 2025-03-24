@@ -9,7 +9,7 @@ class RenderHTML
     public function __construct()
     {
         // Obtener valores de sesión o asignar valores por defecto
-        $this->isLogged = isset($_SESSION['user_id']);
+        $this->isLogged = $_SESSION['isLogged'] ?? false;
         $this->piedras = $_SESSION['piedras'] ?? 0;
     }
 
@@ -38,30 +38,34 @@ class RenderHTML
     // Renderizar el header
     public function RenderHeader()
     {
-        echo '
-                    <div class="logo-inicio">
-                        <a href="/Dokkan_Battle/index.php"><img src="./img/logo.webp" alt="Logo"></a>
-                    </div>';
-
         if ($this->isLogged) {
-            echo ' 
-                        <input type="number" readonly value="' . $this->piedras . '" id="piedras" name="piedras">
-                        <button class="conseguirPiedras"><a href="/Dokkan_Battle/views/users/conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
-                        <div class="botones2">
-                            <button class="perfil"><a href="/Dokkan_Battle/views/users/perfil.php">PERFIL</a></button>
-                            <button class="inventario"><a href="/Dokkan_Battle/views/users/inventario.php">INVENTARIO</a></button>
-                            <button class="gachapon"><a href="/Dokkan_Battle/views/users/gachapon.php">GACHAPÓN</a></button>
-                        </div>';
-        } else {
-            echo ' <div class="botones">
-                        <button class="registro"><a href="./views/users/registro.php">REGISTRARSE</a></button>
-                        <button class="login"><a href="./views/users/login.php">LOGIN</a></button>
-                        </div>';
-        }
-
-        echo ' 
+            echo '
+                <header class="headerIniciado">
+                    <div class="logo-inicio">
+                        <a href=""><img src="./img/logo.webp" alt="Logo"></a>
                     </div>
+
+                    <div class="botones">
+                        <input type="number" readonly value="'.$this->getPiedras() /*PROVISIONAL*/.'" id="piedras" name="piedras">
+                        <button class="conseguirPiedras"><a href="./views/users/conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
+                    </div>
+
+                    <div class="botones2">
+                        <button class="perfil"><a href="./views/users/perfil.php">PERFIL</a></button>
+                         <button class="inventario"><a href="./views/users/inventario.php">INVENTARIO</a></button>
+                        <button class="gachapon"><a href="./views/users/gachapon.php">GACHAPON</a></button>
+                    </div>
+            
                 </header>';
+        } else {
+            echo '<header class="headerNoIniciado">
+
+                    <button class="registro"><a href="./views/users/registro.php">REGISTRARSE</a></buttons>
+
+                    <button class="login"><a href="./views/users/login.php">LOGIN</a></button>
+
+                </header>';
+        }
     }
 }
 ?>

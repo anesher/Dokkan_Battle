@@ -239,21 +239,35 @@ article {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 5px;
+    margin: 10px;
     background-color: white;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para un efecto de tarjeta */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para hover */
+}
+
+article:hover {
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más intensa en hover */
 }
 
 article h3 {
-    color: black;
+    color: #333; /* Color más oscuro para el texto */
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
 }
 
 article div {
-    width: 250px;
-    height: 200px;
+    width: 200px; /* Ajusta el tamaño del contenedor */
+    height: 300px;
     display: flex;
+    justify-content: center;
     align-items: center;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que exceda el contenedor */
+    border-radius: 10px;
+    border: 1px solid black;
 }
 
 article div img {

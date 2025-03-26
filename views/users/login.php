@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario->setContrasena($contrasena);
         
         if ($usuario->login()) {
-            header("Location: gachapon.php");
+            header("Location: ../../index.php");
             exit();
         } else {
             $_SESSION['error'] = "Usuario o contraseña incorrectos.";

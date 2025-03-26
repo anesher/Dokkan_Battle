@@ -1,3 +1,51 @@
+<?php
+session_start();
+
+include_once "../../class/Usuario.php";
+include_once "../../libs/function/connect_bbdd.php";
+
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+    header("Location: ../../index.php");
+    exit();
+    } else {
+        $user_id = $_SESSION['id_usuario'];
+    }
+
+    $conexion = connect_bbdd();
+
+    $usuario = mysqli_real_escape_string($conexion, $user_id);
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST['nombre']) || empty($_POST['correo']) || empty($_POST['usuario']) || empty($_POST['contrasena'])) {
+                echo "Por favor, completa todos los campos.";
+            } else {
+                $nombre = htmlspecialchars($_POST['nombre'], ENT_QUOTES, 'UTF-8');
+                $correo = filter_var($_POST['correo'], FILTER_VALIDATE_EMAIL);
+                $nombreUsuario = htmlspecialchars($_POST['usuario'], ENT_QUOTES, 'UTF-8');
+                $contrasena = $_POST['contrasena'];
+        
+                if (!$correo) {
+                    echo "Correo electrónico no válido.";
+                } else {
+                    try {
+                        $update = "UPDATE usuario SET nombre = '$nombre', correo = '$correo', nombre_usuario = '$nombreUsuario', contraseña = '$contrasena' WHERE id_usuario = '$usuario'";
+                        $resultado = mysqli_query($conexion, $update);
+
+                        if (!$resultado) {
+                            echo "Error al actualizar los datos.";
+                        } else {
+                            header("Location: perfil.php");
+                            exit();
+                        }
+                    } catch (Exception $e) {
+                        echo "Error: " . $e->getMessage();
+                    }
+                }
+            }
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

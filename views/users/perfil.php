@@ -3,12 +3,20 @@
     include_once "../../libs/function/connect_bbdd.php";
 
     session_start();
-    
+
+    // Verificar si el usuario está autenticado
+    if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+    header("Location: ../../index.php");
+    exit();
+    } else {
+        $user_id = $_SESSION['id_usuario'];
+    }
+
     $conexion = connect_bbdd();
+    
+    $usuario = mysqli_real_escape_string($conexion, $user_id);
 
-    $usuario = mysqli_real_escape_string($conexion, $_SESSION['usuario']);
-
-        $consulta = "SELECT * FROM usuario WHERE nombre_usuario = '".$usuario."'";
+        $consulta = "SELECT * FROM usuario WHERE id_usuario = '".$usuario."'";
 
     $resultado = mysqli_query($conexion, $consulta);
 
@@ -45,13 +53,13 @@
             </div>
         </header>
         <div class="contenedor-perfil">
-        <p>NOMBRE</p>
+        <h2>NOMBRE</h2>
         <h3><?php echo $extraido['nombre'] ?></h3>
-        <p>CORREO</p>
+        <h2>CORREO</h2>
         <h3><?php echo $extraido['correo'] ?></h3>
-        <p>NOMBRE DE USUARIO</p>
+        <h2>NOMBRE DE USUARIO</h2>
         <h3><?php echo $extraido['nombre_usuario'] ?></h3>
-        <p>CONTRASEÑA</p>
+        <h2>CONTRASEÑA</h2>
         <h3><?php echo $extraido['contraseña'] ?></h3>
         <button class="editarPerfil"><a href="./editarUsuario.php">Editar perfil</a></button>
         </div>

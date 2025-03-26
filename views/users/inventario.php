@@ -48,7 +48,7 @@ $personajes = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                 <div class="botones2">
                     <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
                     <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
-                    <button class="gachapon"><a href="./gachapon.php">GACHAPÓN</a></button>
+                    <button class="gachapon"><a href="./gachapon.php">GACHAPON</a></button>
                 </div>
             </div>
         </header>
@@ -56,12 +56,14 @@ $personajes = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             <?php if (!empty($personajes)): ?>
                 <?php foreach ($personajes as $p): ?>
                     <article>
-                        <img src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
+                        <div>
+                            <img src="<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>">
+                        </div>
                         <h3><?= htmlspecialchars($p['name']) ?> (x<?= $p['cantidad'] ?>)</h3>
                     </article>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p class="mensaje-vacio">¡Aún no tienes personajes!</p>
+                <p>¡Aún no tienes personajes!</p>
             <?php endif; ?>
         </section>
     </div>

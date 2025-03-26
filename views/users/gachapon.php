@@ -50,8 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gachapon</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/miguel.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+</head>
+<link rel="stylesheet" type="text/css" href="../../css/miguel.css">
 </head>
 
 <body>
@@ -75,11 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </header>
         <div class="contenedor-gachapon">
             <h1>FUSION POWER</h1>
-            <form method="POST">
                 <p class="gachaDescrip">¡ Prueba tu suerte y hazte con los personajes mas fuertes del universo de Dragon Ball !</p>
                 <img src="../../img/gachapon.webp" alt="Gachapon">
                 <p class="costePiedras">Coste: 5 piedras</p>
-                <button type="submit" id="tirarGachapon">TIRAR (5 PIEDRAS)</button>
+            <form method="POST">
+                <button type="submit" id="tirarGachapon">TIRAR</button>
             </form>
         </div>
     </div>

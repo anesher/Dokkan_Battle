@@ -1,11 +1,25 @@
+<?php
+session_start();
+
+// Verificar si hay un personaje en la sesión
+if (!isset($_SESSION['ultimo_personaje'])) {
+    header("Location: gachapon.php");
+    exit();
+}
+
+// Obtener datos y limpiar la sesión
+$personaje = $_SESSION['ultimo_personaje'];
+unset($_SESSION['ultimo_personaje']);
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tirada Gachapon</title>
-    <link rel="stylesheet" type="text/css" href="../../css/style.css"></head>
-    <link rel="stylesheet" type="text/css" href="../../css/miguel.css"></head>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/miguel.css">
 </head>
 <body>
     <video autoplay muted loop id="">
@@ -13,24 +27,25 @@
     </video>
     <div class="main">
         <header class="headerIniciado">
-        <div class="logo-inicio">
-            <a href="../../index.php"><img src="../../img/logo.webp" alt="Logo"></a>
-        </div>
-            <div class="botones">
-            <input type="number" readonly value="0" id="piedras" name="piedras">
-            <button class="conseguirPiedras"><a href="./conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
-            <div class="botones2">
-            <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
-            <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
-            <button class="gachapon"><a href="./gachapon.php">GACHAPÓN</a></button>
+            <div class="logo-inicio">
+                <a href="../../index.php"><img src="../../img/logo.webp" alt="Logo"></a>
             </div>
+            <div class="botones">
+                <input type="number" readonly value="0" id="piedras" name="piedras">
+                <button class="conseguirPiedras"><a href="./conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
+                <div class="botones2">
+                    <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
+                    <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
+                    <button class="gachapon"><a href="./gachapon.php">GACHAPÓN</a></button>
+                </div>
             </div>
         </header>
-    <div class="contenedor-tirada">
-        <h1>¡Has conseguido a ******* <!--Nombre del personaje que haya salido--></h1>
-        <img src = "../../img/logo.webp" > <!-- Imagen del personaje que haya salido-->
-        <p>¡Enhorabuena!</p>
-        <button><a href="gachapon.php">Volver al Gachapon</a></button>
+        <div class="contenedor-tirada">
+            <h1>¡Has conseguido a <?= htmlspecialchars($personaje['name']) ?>!</h1>
+            <img src="<?= htmlspecialchars($personaje['image']) ?>" alt="<?= htmlspecialchars($personaje['name']) ?>">
+            <p><?= htmlspecialchars($personaje['description']) ?></p>
+            <button><a href="gachapon.php">Volver al Gachapon</a></button>
+        </div>
     </div>
 </body>
 </html>

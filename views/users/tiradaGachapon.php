@@ -1,13 +1,9 @@
 <?php
 session_start();
-
-// Verificar si hay un personaje en la sesión
-if (!isset($_SESSION['ultimo_personaje'])) {
-    header("Location: gachapon.php");
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+    header("Location: ../../index.php");
     exit();
 }
-
-// Obtener datos y limpiar la sesión
 $personaje = $_SESSION['ultimo_personaje'];
 unset($_SESSION['ultimo_personaje']);
 ?>
@@ -17,21 +13,21 @@ unset($_SESSION['ultimo_personaje']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tirada Gachapon</title>
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/miguel.css">
+    <title>¡Has obtenido a <?= htmlspecialchars($personaje['name']) ?>!</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/miguel.css">
 </head>
 <body>
-    <video autoplay muted loop id="">
+    <video autoplay muted loop>
         <source src="../../videos/fondo.mp4" type="video/mp4">
     </video>
     <div class="main">
         <header class="headerIniciado">
-            <div class="logo-inicio">
+        <div class="logo-inicio">
                 <a href="../../index.php"><img src="../../img/logo.webp" alt="Logo"></a>
             </div>
             <div class="botones">
-                <input type="number" readonly value="0" id="piedras" name="piedras">
+                <input type="number" readonly value="0" id="piedras">
                 <button class="conseguirPiedras"><a href="./conseguirPiedras.php">CONSEGUIR PIEDRAS</a></button>
                 <div class="botones2">
                     <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
@@ -41,7 +37,7 @@ unset($_SESSION['ultimo_personaje']);
             </div>
         </header>
         <div class="contenedor-tirada">
-            <h1>¡Has conseguido a <?= htmlspecialchars($personaje['name']) ?>!</h1>
+            <h1>¡Has obtenido a <?= htmlspecialchars($personaje['name']) ?>!</h1>
             <img src="<?= htmlspecialchars($personaje['image']) ?>" alt="<?= htmlspecialchars($personaje['name']) ?>">
             <p><?= htmlspecialchars($personaje['description']) ?></p>
             <button><a href="gachapon.php">Volver al Gachapon</a></button>

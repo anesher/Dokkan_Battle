@@ -152,22 +152,21 @@ class Usuario
 
     // Función para iniciar sesión con el usuario y la contraseña
     public function login() {
-        session_start();
         $conn = connect_bbdd();
         $consulta = "SELECT * FROM usuario WHERE nombre_usuario = ?";
         $stmt = $conn->prepare($consulta);
         $stmt->bind_param("s", $this->nombre_usuario);
         $stmt->execute();
         $resultado = $stmt->get_result();
-        $stmt->close();
-        $conn->close();
-
+        
         if ($resultado->num_rows == 1) {
             $fila = $resultado->fetch_assoc();
             if (password_verify($this->contrasena, $fila['contraseña'])) {
-                $_SESSION['usuario'] = $fila['nombre_usuario'];
-                $_SESSION['user_id'] = $fila['id_usuario'];
+                // Establecer todas las variables de sesión necesarias
+                $_SESSION['id_usuario'] = $fila['id_usuario'];
+                $_SESSION['nombre_usuario'] = $fila['nombre_usuario'];
                 $_SESSION['tipo'] = $fila['tipo'];
+                $_SESSION['logueado'] = true;
                 return true;
             }
         }

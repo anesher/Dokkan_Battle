@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="botones2">
                     <button class="perfil"><a href="./perfil.php">PERFIL</a></button>
                     <button class="inventario"><a href="./inventario.php">INVENTARIO</a></button>
-                    <button class="gachapon"><a href="./gachapon.php">GACHAPÓN</a></button>
+                    <button class="gachapon"><a href="./gachapon.php">GACHAPON</a></button>
                 </div>
             </div>
         </header>

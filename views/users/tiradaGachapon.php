@@ -37,9 +37,9 @@ unset($_SESSION['ultimo_personaje']);
             </div>
         </header>
         <div class="contenedor-tirada">
-            <h1>¡Has obtenido a <?= htmlspecialchars($personaje['name']) ?>!</h1>
+            <h2>¡Has obtenido a <?= htmlspecialchars($personaje['name']) ?>!</h2>
             <img src="<?= htmlspecialchars($personaje['image']) ?>" alt="<?= htmlspecialchars($personaje['name']) ?>">
-            <p><?= htmlspecialchars($personaje['description']) ?></p>
+            <h2><?= htmlspecialchars($personaje['description']) ?></h2>
             <button><a href="gachapon.php">Volver al Gachapon</a></button>
         </div>
     </div>

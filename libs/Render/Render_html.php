@@ -9,7 +9,7 @@ class RenderHTML
     public function __construct()
     {
         // Obtener valores de sesión o asignar valores por defecto
-        $this->isLogged = $_SESSION['isLogged'] ?? false;
+        $this->isLogged = $_SESSION['logueado'] ?? false;
         $this->piedras = $_SESSION['piedras'] ?? 0;
     }
 
@@ -17,7 +17,7 @@ class RenderHTML
     public function setLogged(bool $isLogged)
     {
         $this->isLogged = $isLogged;
-        $_SESSION['isLogged'] = $isLogged;
+        $_SESSION['logueado'] = $isLogged;
     }
     public function getLogged(): bool
     {
@@ -30,6 +30,7 @@ class RenderHTML
         $this->piedras = $piedras;
         $_SESSION['piedras'] = $piedras;
     }
+
     public function getPiedras(): int
     {
         return $this->piedras;
